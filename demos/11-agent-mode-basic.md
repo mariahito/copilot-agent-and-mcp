@@ -25,7 +25,7 @@ These items are already configured. You have to go through them and explain the 
 
 ## Feature Request: Add comment on a favorite book
 
-We'll use this feature request to demonstrate Copilot Agent's capabilities:
+We'll use this feature request to demonstrate GitHub Copilot Chat in Agent Mode's capabilities:
 
 1. Go to your IDE
 2. Open the newly created repository

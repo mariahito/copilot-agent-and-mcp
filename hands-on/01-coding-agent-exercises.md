@@ -1,11 +1,11 @@
-# GitHub Copilot Coding Agent Exercises
+# GitHub Copilot Cloud Agent Exercises
 
 > [!NOTE]
 > This is an hands-on workshop so it has to be done by the participants. The instructions below are to be used by the workshop participants themselves.
 
 ## Prerequisites
 
-- A GitHub account with Copilot enabled, access to Copilot Coding Agent and access to MCP server.
+- A GitHub account with Copilot enabled, access to Copilot Cloud Agent and access to MCP server.
 
 ## Environment configuration
 
@@ -46,7 +46,7 @@ Add a "Clear All Favorites" button that allows users to remove all books from th
 
 ### Learning Objectives (Exercise 1)
 
-- Understanding how Copilot Agent processes feature requests
+- Understanding how Copilot Cloud Agent processes feature requests
 - Observing multi-file changes
 - Learning about test implementation
 - Reviewing error handling approaches
@@ -160,7 +160,7 @@ Implement a book review system by breaking down the feature into multiple issues
 5. Assign to Copilot:
    1. Assign the Main Feature issue to Copilot
    2. Check the 👀 reaction
-   3. Verify in the Coding Agent timeline that Copilot:
+   3. Verify in the Cloud Agent timeline that Copilot:
      - Has access to linked issues and reads their content via the GitHub MCP Server
      - Understand the full feature scope
 
@@ -183,7 +183,7 @@ Implement a book review system by breaking down the feature into multiple issues
 ### Learning Objectives (Exercise 3)
 
 - Breaking down complex features into manageable pieces
-- Setting up and using MCP with Copilot Coding Agent
+- Setting up and using MCP with Copilot Cloud Agent
 - Managing linked issues effectively
 - Understanding full-stack feature implementation
 - Reviewing comprehensive changes across multiple systems

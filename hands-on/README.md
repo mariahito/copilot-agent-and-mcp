@@ -11,7 +11,7 @@ This document quickly describes the content of the hands-on workshop. It is writ
 
 - GitHub account with Copilot access
 - An IDE with GitHub Copilot Chat extension
-- Access to GitHub Copilot Coding Agent
+- Access to GitHub Copilot Cloud Agent
 - Access to GitHub Copilot Chat in Agent Mode
 - Access to MCP servers
 - Node.js and npm installed
@@ -20,12 +20,12 @@ This document quickly describes the content of the hands-on workshop. It is writ
 
 Everything is descripted step by step before each exercise.
 
-## Part 1: GitHub Copilot Coding Agent (15-20 minutes)
+## Part 1: GitHub Copilot Cloud Agent (15-20 minutes)
 
 ### Exercise 1: Basic Feature Addition
 
 1. Create an issue for adding a "Clear All Favorites" button
-2. Use Copilot Agent to implement the feature by:
+2. Use Copilot Cloud Agent to implement the feature by:
    - Assigning the issue to Copilot
    - Checking the 👀 reaction
    - Reviewing the generated PR
@@ -36,7 +36,7 @@ Everything is descripted step by step before each exercise.
 
 1. Create an issue to add sorting options for the book list (by title, author)
 2. Follow the same process as Exercise 1
-3. Review and discuss how Copilot Agent:
+3. Review and discuss how Copilot Cloud Agent:
    - Understands the codebase
    - Makes changes across multiple files
    - Implements both frontend and backend changes
@@ -48,7 +48,7 @@ Everything is descripted step by step before each exercise.
    - Frontend issue: UI components for adding/displaying reviews
    - Backend issue: API endpoints and database changes for reviews
    - Main feature issue: Link to both frontend and backend issues
-2. Use the MCP server for Copilot Coding Agent
+2. Use the MCP server for Copilot Cloud Agent
 3. Assign the main issue to Copilot:
    - Ensure Copilot
    - Watch how Copilot:
