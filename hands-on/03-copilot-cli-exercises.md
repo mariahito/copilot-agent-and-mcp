@@ -7,7 +7,7 @@
 
 - A GitHub account with Copilot enabled (any plan).
 - Node.js 16+ installed.
-- GitHub Copilot CLI installed and authenticated (see Exercise 6).
+- GitHub Copilot CLI installed and authenticated (see Exercise 7).
 > [!IMPORTANT]
 > If you receive Copilot through an organization, an admin must first enable the **GitHub Copilot CLI** policy in the organization's settings before the CLI will work.
 
@@ -18,15 +18,18 @@
 - Use the instructions in the [`README.md` file](/README.md) to set up your development environment.
 - All the following instructions have to be done in your terminal.
 
+> [!NOTE]
+> If you completed **Exercise 6** in the Agent Mode lab, the `add-api-feature` skill is already in your repository at `.github/skills/add-api-feature/SKILL.md`. Copilot CLI reads skills from that directory automatically — no extra setup is needed. If you skipped that exercise, you can still complete these exercises but Exercise 9 will not use the skill.
+
 ---
 
-## Exercise 6: Install and Authenticate GitHub Copilot CLI
+## Exercise 7: Install and Authenticate GitHub Copilot CLI
 
-### Task (Exercise 6)
+### Task (Exercise 7)
 
 Install GitHub Copilot CLI and start your first interactive session against this repository.
 
-### Steps (Exercise 6)
+### Steps (Exercise 7)
 
 1. Install GitHub Copilot CLI using the method that matches your environment:
 
@@ -75,7 +78,7 @@ Install GitHub Copilot CLI and start your first interactive session against this
    /context
    ```
 
-### Learning Objectives (Exercise 6)
+### Learning Objectives (Exercise 7)
 
 - Installing and authenticating GitHub Copilot CLI
 - Starting an interactive session and understanding trust prompts
@@ -83,13 +86,13 @@ Install GitHub Copilot CLI and start your first interactive session against this
 
 ---
 
-## Exercise 7: Explore the Codebase with Copilot CLI
+## Exercise 8: Explore the Codebase with Copilot CLI
 
-### Task (Exercise 7)
+### Task (Exercise 8)
 
 You've just joined the team and need to get up to speed on how the app handles users and data. Use Copilot CLI to audit the project for potential issues and produce a short onboarding brief.
 
-### Steps (Exercise 7)
+### Steps (Exercise 8)
 
 1. Start a Copilot CLI session from the project root (if not already open):
    ```bash
@@ -125,31 +128,45 @@ You've just joined the team and need to get up to speed on how the app handles u
    that could be exploited and suggest fixes.
    ```
 
-### Learning Objectives (Exercise 7)
+7. Check whether any agent skills are available in this repository:
+   ```
+   What agent skills are defined in this repository? Summarize what each one does 
+   and when you would use it.
+   ```
+   If you completed Exercise 6 in the Agent Mode lab, you should see the `add-api-feature` skill described. Keep this in mind for Exercise 9.
+
+### Learning Objectives (Exercise 8)
 
 - Using Copilot CLI to audit and understand an unfamiliar codebase
 - Combining interactive and non-interactive (`-p`, `-s`) modes
 - Attaching local files with `@` for targeted, focused analysis
+- Discovering available agent skills from within the CLI session
 
 ---
 
-## Exercise 8: Add a Feature Using Plan Mode
+## Exercise 9: Add a Feature Using Plan Mode
 
-### Task (Exercise 8)
+### Task (Exercise 9)
 
-Use Copilot CLI's plan mode to add a "recently added" books endpoint to the backend, review the generated plan before any code is written, then let Copilot implement and verify it.
+Use Copilot CLI's plan mode together with the `add-api-feature` skill to add a "recently added" books endpoint to the backend. Review the generated plan before any code is written, then let Copilot implement and verify it. Notice how the skill steers Copilot to follow the project's existing conventions.
 
-### Steps (Exercise 8)
+### Steps (Exercise 9)
 
 1. Start a Copilot CLI session from the project root (if not already open):
    ```bash
    copilot
    ```
 
-2. Activate plan mode by pressing **Shift+Tab**, then enter the following prompt:
+2. Confirm the skill is loaded before writing any code:
    ```
-   Add a GET /books/recent?limit= endpoint to backend/routes/books.js that returns 
-   the last N books added to the collection (default limit: 5, max: 20). 
+   Describe the add-api-feature skill. What conventions does it enforce and 
+   what files will it create or modify?
+   ```
+
+3. Activate plan mode by pressing **Shift+Tab**, then enter the following prompt:
+   ```
+   Use the add-api-feature skill to add a GET /books/recent?limit= endpoint 
+   that returns the last N books added to the collection (default limit: 5, max: 20). 
    Update the tests in backend/tests/books.test.js to cover the new endpoint, 
    including edge cases for missing and out-of-range limit values.
    ```
@@ -160,9 +177,11 @@ Use Copilot CLI's plan mode to add a "recently added" books endpoint to the back
    - Wait for your approval before touching any file.
 
 4. Review the plan in `plan.md`. Check that it covers:
-   - The new route handler in `books.js`.
+   - The new route handler in `books.js` following the `createRouter` injection pattern.
+   - Registration of the route in `backend/routes/index.js`.
    - Default and maximum limit enforcement.
    - New test cases in `books.test.js` for happy path and edge cases.
+   - A Redux slice update if the skill includes frontend changes.
 
 5. Approve the plan and let Copilot implement the feature.
 
@@ -184,25 +203,32 @@ Use Copilot CLI's plan mode to add a "recently added" books endpoint to the back
    Show me the minimal change needed in the Redux slice.
    ```
 
-### Learning Objectives (Exercise 8)
+9. Reflect on the role of the skill:
+   ```
+   Compare the plan and the generated files to the existing route and test files. 
+   Did the skill keep the implementation consistent with the project's conventions?
+   What would have been different without it?
+   ```
 
-- Using plan mode (`Shift+Tab`) to review changes before they are made
-- Understanding how Copilot CLI decomposes a feature request into steps
+### Learning Objectives (Exercise 9)
+
+- Using plan mode (`Shift+Tab`) together with an agent skill
+- Seeing how a skill constrains the plan to follow project conventions
 - Letting Copilot run tests and iterate on failures autonomously
 - Exploring cross-layer implications of a backend change
 
 ---
 
-## Exercise 9 (Optional): Work IQ — Surface M365 Context in the Terminal
+## Exercise 10 (Optional): Work IQ — Surface M365 Context in the Terminal
 
 > [!IMPORTANT]
-> This exercise requires a **Microsoft 365 account with Copilot enabled**. If you don't have one, skip to Exercise 10.
+> This exercise requires a **Microsoft 365 account with Copilot enabled**. If you don't have one, skip to Exercise 11.
 
-### Task (Exercise 9)
+### Task (Exercise 10)
 
 Install the Microsoft Work IQ plugin and use it to answer questions about your calendar, emails, and Teams conversations without leaving the terminal.
 
-### Steps (Exercise 9)
+### Steps (Exercise 10)
 
 1. Start a Copilot CLI session:
    ```bash
@@ -253,7 +279,7 @@ Install the Microsoft Work IQ plugin and use it to answer questions about your c
    deadline mentioned. Keep it professional and under 50 words.
    ```
 
-### Learning Objectives (Exercise 9)
+### Learning Objectives (Exercise 10)
 
 - Installing and configuring the Work IQ plugin
 - Grounding Copilot CLI responses in real Microsoft 365 context
@@ -261,16 +287,16 @@ Install the Microsoft Work IQ plugin and use it to answer questions about your c
 
 ---
 
-## Exercise 10 (Optional): Deploy to Azure with /fleet + Azure MCP Server
+## Exercise 11 (Optional): Deploy to Azure with /fleet + Azure MCP Server
 
 > [!IMPORTANT]
 > This exercise requires an **active Azure subscription** and the Azure CLI installed and authenticated (`az login`).
 
-### Task (Exercise 10)
+### Task (Exercise 11)
 
 Register the Azure MCP Server inside your Copilot CLI session and use `/fleet` to deploy the project backend to Azure App Service.
 
-### Steps (Exercise 10)
+### Steps (Exercise 11)
 
 1. In a separate terminal, authenticate with Azure:
    ```bash
@@ -334,7 +360,7 @@ Register the Azure MCP Server inside your Copilot CLI session and use `/fleet` t
     Delete the resource group rg-cli-lab-<your-initials> and all resources inside it.
     ```
 
-### Learning Objectives (Exercise 10)
+### Learning Objectives (Exercise 11)
 
 - Adding an MCP server to a Copilot CLI session with `/mcp add`
 - Using the Azure MCP Server to query real Azure resources
