@@ -47,7 +47,7 @@ These items are partially configured. You have to go through them, modify them a
 
 ## Feature Request: Add and display more information about a book
 
-We'll use this feature request to demonstrate Copilot Agent's capabilities with MCP:
+We'll use this feature request to demonstrate GitHub Copilot Chat in Agent Mode's capabilities with MCP:
 
 1. Go to your IDE and open the window containing the MCP server repository
 2. Don't start it from here, it will be started by the webapp repository [configuration](/.vscode/mcp.json)

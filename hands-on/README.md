@@ -11,7 +11,7 @@ This document quickly describes the content of the hands-on workshop. It is writ
 
 - GitHub account with Copilot access
 - An IDE with GitHub Copilot Chat extension
-- Access to GitHub Copilot Coding Agent
+- Access to GitHub Copilot Cloud Agent
 - Access to GitHub Copilot Chat in Agent Mode
 - Access to MCP servers
 - Node.js and npm installed
@@ -20,12 +20,12 @@ This document quickly describes the content of the hands-on workshop. It is writ
 
 Everything is descripted step by step before each exercise.
 
-## Part 1: GitHub Copilot Coding Agent (15-20 minutes)
+## Part 1: GitHub Copilot Cloud Agent (15-20 minutes)
 
 ### Exercise 1: Basic Feature Addition
 
 1. Create an issue for adding a "Clear All Favorites" button
-2. Use Copilot Agent to implement the feature by:
+2. Use Copilot Cloud Agent to implement the feature by:
    - Assigning the issue to Copilot
    - Checking the 👀 reaction
    - Reviewing the generated PR
@@ -36,7 +36,7 @@ Everything is descripted step by step before each exercise.
 
 1. Create an issue to add sorting options for the book list (by title, author)
 2. Follow the same process as Exercise 1
-3. Review and discuss how Copilot Agent:
+3. Review and discuss how Copilot Cloud Agent:
    - Understands the codebase
    - Makes changes across multiple files
    - Implements both frontend and backend changes
@@ -48,7 +48,7 @@ Everything is descripted step by step before each exercise.
    - Frontend issue: UI components for adding/displaying reviews
    - Backend issue: API endpoints and database changes for reviews
    - Main feature issue: Link to both frontend and backend issues
-2. Use the MCP server for Copilot Coding Agent
+2. Use the MCP server for Copilot Cloud Agent
 3. Assign the main issue to Copilot:
    - Ensure Copilot
    - Watch how Copilot:
@@ -84,3 +84,43 @@ Everything is descripted step by step before each exercise.
    - Creates well-structured issues
    - Handles the implementation
    - Adds necessary tests
+
+## Part 3: GitHub Copilot CLI (15-20 minutes)
+
+> Detailed instructions: [03-copilot-cli-exercises.md](./03-copilot-cli-exercises.md)
+
+### Exercise 6: Install and Authenticate GitHub Copilot CLI
+
+1. Install the CLI via npm, WinGet, or Homebrew
+2. Start an interactive session and authenticate with GitHub
+3. Run a warm-up question to confirm the CLI is reading the repository
+
+### Exercise 7: Explore the Codebase
+
+1. Use the CLI to trace the JWT authentication flow end-to-end
+2. Ask about the favorites feature and its data flow
+3. Try non-interactive mode (`-p`, `-s`) and file attachment with `@`
+
+### Exercise 8: Add a Feature Using Plan Mode
+
+1. Use **Shift+Tab** to activate plan mode
+2. Prompt Copilot to add a `/books/search` endpoint and tests
+3. Review the generated plan before approving
+4. Let Copilot implement the feature and run the test suite
+
+### Exercise 9 (Optional): Work IQ — Surface M365 Context
+
+> Requires Microsoft 365 with Copilot enabled.
+
+1. Install the Work IQ plugin via `/plugin install`
+2. Query your calendar, emails, and Teams messages from the terminal
+3. Combine M365 context with codebase reasoning in a single session
+
+### Exercise 10 (Optional): Deploy to Azure with /fleet + Azure MCP Server
+
+> Requires an active Azure subscription.
+
+1. Register the Azure MCP Server with `/mcp add`
+2. Query your existing Azure resources
+3. Use `/fleet` to deploy the backend to Azure App Service
+4. Verify the deployment and clean up resources
