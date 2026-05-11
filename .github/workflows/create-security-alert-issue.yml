@@ -11,10 +11,10 @@ jobs:
   create-security-issue:
     runs-on: ubuntu-latest
     steps:
-      - name: Create issue from open Dependabot alert
+      - name: Create issue from open CodeQL alert
         env:
           GH_TOKEN: ${{ secrets.CODEQL_SECRET }}
-          REPO: ps-copilot-sandbox/copilot-agent-and-mcp
+          REPO: ${{ github.repository }}
         shell: bash
         run: |
           set -euo pipefail
