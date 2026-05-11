@@ -32,6 +32,21 @@
 .simpleBtn:hover {
   background: #178d8d;
 }
+.removeFavBtn {
+  background: #e25555;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+.removeFavBtn:hover {
+  background: #b83c3c;
+}
 .heartBtn:focus,
 .heartBtn:focus-visible,
 .heartBtn:active {
