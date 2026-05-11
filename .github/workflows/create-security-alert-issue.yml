@@ -19,24 +19,32 @@ jobs:
         run: |
           set -euo pipefail
 
-          # generated-by-copilot: Fetch the first open Dependabot alert for the repository.
-          alert_json="$(gh api \
+          # generated-by-copilot: Fetch the first open CodeQL alert from code scanning.
+          code_scanning_response="$(gh api \
             -H 'Accept: application/vnd.github+json' \
-            "/repos/${REPO}/dependabot/alerts" \
-            --jq 'map(select(.state=="open"))[0]')"
+            "/repos/${REPO}/code-scanning/alerts?state=open&per_page=100" \
+            --silent 2>/dev/null || true)"
 
-          if [[ -z "${alert_json}" || "${alert_json}" == "null" ]]; then
-            echo "No open Dependabot alerts found."
+          if [[ -z "${code_scanning_response}" || "${code_scanning_response}" == "[]" ]]; then
+            echo "No accessible open CodeQL alerts found."
             exit 0
           fi
 
-          alert_title="$(echo "${alert_json}" | jq -r '.security_advisory.summary // "Unknown alert"')"
+          alert_json="$(echo "${code_scanning_response}" | jq '.[0]')"
+          if [[ -z "${alert_json}" || "${alert_json}" == "null" ]]; then
+            echo "No accessible open CodeQL alerts found."
+            exit 0
+          fi
+
+          alert_title="$(echo "${alert_json}" | jq -r '.rule.description // .rule.name // "Unknown alert"')"
           alert_url="$(echo "${alert_json}" | jq -r '.html_url // empty')"
 
           if [[ -z "${alert_url}" ]]; then
             echo "Alert URL is missing; cannot create issue body."
             exit 1
           fi
+
+          echo "Using code-scanning alert: ${alert_title}"
 
           issue_title="Fix alert ${alert_title}"
           issue_body="Fix ${alert_url}"
