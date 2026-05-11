@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { fetchBooks } from '../store/booksSlice';
-import { addFavorite, fetchFavorites } from '../store/favoritesSlice';
+import { addFavorite, removeFavorite, fetchFavorites } from '../store/favoritesSlice';
 import { useNavigate } from 'react-router-dom';
 import styles from '../styles/BookList.module.css';
 
@@ -30,6 +30,14 @@ const BookList = () => {
     }
     await dispatch(addFavorite({ token, bookId }));
     dispatch(fetchFavorites(token));
+  };
+
+  const handleRemoveFavorite = async (bookId) => {
+    if (!token) {
+      navigate('/');
+      return;
+    }
+    await dispatch(removeFavorite({ token, bookId }));
   };
 
   if (status === 'loading') return <div>Loading...</div>;
@@ -67,12 +75,21 @@ const BookList = () => {
                 )}
                 <div className={styles.bookTitle}>{book.title}</div>
                 <div className={styles.bookAuthor}>by {book.author}</div>
-                <button
-                  className={styles.simpleBtn}
-                  onClick={() => handleAddFavorite(book.id)}
-                >
-                  {isFavorite ? 'In Favorites' : 'Add to Favorites'}
-                </button>
+                {isFavorite ? (
+                  <button
+                    className={styles.removeFavBtn}
+                    onClick={() => handleRemoveFavorite(book.id)}
+                  >
+                    Remove from Favorites
+                  </button>
+                ) : (
+                  <button
+                    className={styles.simpleBtn}
+                    onClick={() => handleAddFavorite(book.id)}
+                  >
+                    Add to Favorites
+                  </button>
+                )}
               </div>
             );
           })}
